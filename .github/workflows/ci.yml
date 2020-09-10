@@ -15,6 +15,7 @@ jobs:
       uses: okteto/login@master
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
+        url: ${{ secrets.OKTETO_URL }}
 
     - name: Create namespace
       uses: okteto/create-namespace@master
@@ -22,7 +23,7 @@ jobs:
         namespace: pr-${{ github.event.number }}
 
     - name: Deploy Application
-      uses: okteto/pipeline@master
+      uses: okteto/pipeline@v0.3
       with:
         name: pr-${{ github.event.number }}
 
