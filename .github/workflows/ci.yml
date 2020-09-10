@@ -23,7 +23,7 @@ jobs:
         namespace: pr-${{ github.event.number }}
 
     - name: Deploy Application
-      uses: okteto/pipeline@6b3dee0cfc3557df3ed023dd73916f08343197a5
+      uses: okteto/pipeline@1f7bab58327136ad388e8dfc56bda5f895d129e2
       with:
         name: pr-${{ github.event.number }}
 
