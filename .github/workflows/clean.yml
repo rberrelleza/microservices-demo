@@ -25,3 +25,8 @@ jobs:
       uses: okteto/destroy-pipeline@master
       with:
         name: pr-${{ github.event.number }}
+
+    - name: "Delete Namespace"
+      uses: okteto/delete-namespace@master
+      with:
+        name: pr-${{ github.event.number }}
