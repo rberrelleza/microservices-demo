@@ -1,0 +1,12 @@
+name: currencyservice
+image: okteto/node:12
+command: bash
+sync:
+- .:/usr/src/app
+forward:
+- 9229:9229
+- 7000:7000
+resources:
+  limits:
+    cpu: "1"
+    memory: 2Gi
