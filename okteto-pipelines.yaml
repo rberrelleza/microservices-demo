@@ -1,7 +1,7 @@
 icon: https://raw.githubusercontent.com/rberrelleza/microservices-demo/main/src/frontend/static/icons/Hipster_HeroLogoCyan.svg
 deploy:
   - okteto build -t okteto.dev/frontend:${OKTETO_GIT_COMMIT} src/frontend
-  - okteto build -t okteto.dev/frontend:${OKTETO_GIT_COMMIT} src/currencyservice
+  - okteto build -t okteto.dev/currencyservice:${OKTETO_GIT_COMMIT} src/currencyservice
   - kustomize edit set image frontend=okteto.dev/frontend:${OKTETO_GIT_COMMIT}
   - kustomize edit set image currencyservice=okteto.dev/currencyservice:${OKTETO_GIT_COMMIT}
   - kustomize build --output release/kubernetes-manifests.yaml
