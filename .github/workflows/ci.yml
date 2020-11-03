@@ -2,14 +2,14 @@
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   preview:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
 
     - name: Login
       uses: okteto/login@master
