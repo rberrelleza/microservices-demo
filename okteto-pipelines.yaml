@@ -1,4 +1,4 @@
-icon: https://raw.githubusercontent.com/rberrelleza/microservices-demo/master/src/frontend/static/icons/Hipster_HeroLogoCyan.svg
+icon: https://raw.githubusercontent.com/rberrelleza/microservices-demo/main/src/frontend/static/icons/Hipster_HeroLogoCyan.svg
 deploy:
   - okteto build -t okteto.dev/frontend:${OKTETO_GIT_COMMIT} src/frontend
   - kustomize edit set image frontend=okteto.dev/frontend:${OKTETO_GIT_COMMIT}
