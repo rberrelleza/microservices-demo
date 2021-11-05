@@ -112,7 +112,7 @@ func (plat *platformDetails) setPlatformDetails(env string) {
 		plat.provider = "Azure"
 		plat.css = "azure-platform"
 	} else {
-		plat.provider = "Dafiti + Okteto"
+		plat.provider = "Okteto"
 		plat.css = "gcp-platform"
 	}
 }
