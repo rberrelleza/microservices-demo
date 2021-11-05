@@ -1,0 +1,29 @@
+icon: https://raw.githubusercontent.com/rberrelleza/microservices-demo/main/src/frontend/static/icons/Hipster_HeroLogoCyan.svg
+deploy:
+  - okteto build -t okteto.dev/emailservice:${OKTETO_GIT_COMMIT} src/emailservice
+  - okteto build -t okteto.dev/productcatalogservice:${OKTETO_GIT_COMMIT} src/productcatalogservice
+  - okteto build -t okteto.dev/recommendationservice:${OKTETO_GIT_COMMIT} src/recommendationservice
+  - okteto build -t okteto.dev/shippingservice:${OKTETO_GIT_COMMIT} src/shippingservice
+  - okteto build -t okteto.dev/checkoutservice:${OKTETO_GIT_COMMIT} src/checkoutservice
+  - okteto build -t okteto.dev/paymentservice:${OKTETO_GIT_COMMIT} src/paymentservice
+  - okteto build -t okteto.dev/currencyservice:${OKTETO_GIT_COMMIT} src/currencyservice
+  - okteto build -t okteto.dev/cartservice:${OKTETO_GIT_COMMIT} src/cartservice
+  - okteto build -t okteto.dev/frontend:${OKTETO_GIT_COMMIT} src/frontend
+  - okteto build -t okteto.dev/loadgenerator:${OKTETO_GIT_COMMIT} src/loadgenerator
+  - okteto build -t okteto.dev/adservice:${OKTETO_GIT_COMMIT} src/adservice
+  - kustomize edit set image emailservice=okteto.dev/emailservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image productcatalogservice=okteto.dev/productcatalogservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image recommendationservice=okteto.dev/recommendationservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image shippingservice=okteto.dev/shippingservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image checkoutservice=okteto.dev/checkoutservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image paymentservice=okteto.dev/paymentservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image currencyservice=okteto.dev/currencyservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image cartservice=okteto.dev/cartservice:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image frontend=okteto.dev/frontend:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image loadgenerator=okteto.dev/loadgenerator:${OKTETO_GIT_COMMIT}
+  - kustomize edit set image adservice=okteto.dev/adservice:${OKTETO_GIT_COMMIT}
+  - kustomize build --output release/kubernetes-manifests.yaml
+  - kubectl apply -f release/kubernetes-manifests.yaml
+devs:
+  - src/frontend/okteto.yml
+  - src/currencyservice/okteto.yml
